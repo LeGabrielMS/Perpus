@@ -17,10 +17,10 @@ File SQL Dump terdapat di link Google Drive tersebut.
 ## User Terdaftar Di Database
 
 Berikut adalah kredential user yang terdaftar di database:
-User Biasa
+# User Biasa
 - user@gmail.com
 - user1234
 
-Admin
+# Admin
 - admin@gmail.com
 - admin123
