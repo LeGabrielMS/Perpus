@@ -4,7 +4,7 @@
 - NIM: 22552011043
 - Kelas: TIF RM - 22 CID
 - Mata Kuliah: Pemrograman Web 2
-- Dosen Pengampu: Bapak Adib, S.T., M.Kom.
+- Dosen Pengampu: Adib, S.T., M.Kom.
 
 Departemen Teknik Informatika, Fakultas Industri Kreatif, Universitas Teknologi Bandung.
 
