@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>My Borrow History</title>
     @include('home.css')
 </head>
 
@@ -15,6 +16,7 @@
                 <div class="col-lg-12">
                     <h2>My Borrow History</h2>
                     <span>Borrowed Items</span>
+                    <a href="{{ route('history.export.pdf') }}" class="btn btn-primary">Export to PDF</a>
                 </div>
             </div>
         </div>

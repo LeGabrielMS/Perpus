@@ -14,6 +14,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/borrow_history', [HomeController::class, 'borrow_history']);
+    Route::post('/cancel_borrow/{id}', [HomeController::class, 'cancel_borrow'])->name('cancel_borrow');
+    route::get('/export-pdf', [HomeController::class, 'export_pdf'])->name('history.export.pdf');
 });
 
 Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function () {
@@ -39,8 +43,5 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function () {
 
 route::get('book_details/{id}', [HomeController::class, 'book_details']);
 route::get('/borrow_books/{id}', [HomeController::class, 'borrow_books']);
-
-Route::get('/borrow_history', [HomeController::class, 'borrow_history']);
-Route::post('/cancel_borrow/{id}', [HomeController::class, 'cancel_borrow'])->name('cancel_borrow');
 
 route::get('explore', [HomeController::class, 'explore']);

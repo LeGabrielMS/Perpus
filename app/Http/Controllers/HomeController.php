@@ -9,6 +9,7 @@ use App\Models\BorrowBook;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class HomeController extends Controller
 {
@@ -82,6 +83,31 @@ class HomeController extends Controller
         } else {
             return redirect()->back()->with('error', 'Permintaan peminjaman tidak ditemukan');
         }
+    }
+
+    public function export_pdf()
+    {
+        // 1. Get the authenticated user object
+        $user = Auth::user();
+
+        // 2. Fetch the user's borrow history with eager loading for efficiency
+        $borrow_history = BorrowBook::where('user_id', $user->id)
+            ->with('book') // Eager load book data
+            ->get();
+
+        // 3. Prepare the data to be passed to the PDF view
+        $data = [
+            'user' => $user,
+            'borrow_history' => $borrow_history,
+            'date' => date('F j, Y') // Today's date for the header
+        ];
+
+        // 4. Load the view and generate the PDF
+        $pdf = PDF::loadView('pdfs.borrow_history', $data);
+
+        // 5. Force a download prompt for the user
+        // The filename will be something like "borrowing-history-JohnDoe.pdf"
+        return $pdf->download('borrowing-history-' . $user->name . '-' . now()->format('Y-m-d_H-i-s') . '.pdf');
     }
 
     public function explore()
